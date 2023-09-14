@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org"
+	th:replace="~{admin/base::layout(~{::section},'Setting Admin')}">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="card mr-2">
+
+			<div class="card-body">
+				<div class="row  d-flex justify-content-center align-item-center">
+
+					<div class="col-md-5 ml-1">
+
+						<div class="card setting-card">
+							<h5 class="text-center fw-bolder">Profile</h5>
+							<div class="card-body text-center">
+								<a th:href="@{/admin/admin-profile}" class="btn"
+									style="background: #592675 !important; color: white !important;">Your
+									Profile</a>
+							</div>
+						</div>
+
+					</div>
+					<div class="col-md-5">
+						<div class="card setting-card">
+							<h5 class="text-center">Security</h5>
+							<div class="card-body text-center">
+								<a th:href="@{/admin/change-password}"
+									class="btn btn-warning text-white">Change Password</a>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+	</section>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{normaluser/base::layout(~{::section},'Profile')}">
+<head>
+<meta charset="UTF-8" />
+<title>Profile</title>
+</head>
+<body>
+	<section style="padding: 10px 40px">
+		<div class="card">
+			<div class="card-body">
+				<!-- Image strat -->
+				<div class="container text-center">
+					<img class="rounded-circle" alt=""
+					th:src="@{'/images/'+${user.ImageUrl}}" width="100px" height="100px">
+				</div>
+				<!-- Image end -->
+				<hr style="background: #111; height: 3px;" />
+				<div class="table-responsive text-center">
+					<!-- profile start -->
+					<table class="table text-center">
+						<h3>Your Details</h3>
+						<tbody>
+
+							<tr>
+								<th scope="row">Name:</th>
+								<td><span th:text="${user.Name}"></span></td>
+							</tr>
+							<tr>
+
+								<th scope="row">Email:</th>
+								<td><span th:text="${user.Email}"></span></td>
+							</tr>
+							<tr>
+								<th scope="row">Role:</th>
+								<td><span th:text="${user.Role}"></span></td>
+							</tr>
+							<tr>
+								<th scope="row">Active:</th>
+								<td><span th:text="${user.Enabled}"></span></td>
+							</tr>
+
+						</tbody>
+
+					</table>
+					<hr style="background: #111; height: 3px;" />
+					<div class="txet-center">
+						<h3>-----About You-----</h3>
+						<p th:text="${user.About}" class="border border-info"></p>
+
+					</div>
+					<div class="txet-center">
+					<div class="row">
+					  <div class="col-md-6 col-sm-6">
+					    <button th:onclick="|deleteUser(${user.Id})|"
+							class="btn btn-danger btn-sm mr-2">
+							Delete
+						</button>
+					  </div>
+					  <div class="col-md-6 col-sm-6">
+					    <form method="post" th:action="@{'/user/update-user/'+${user.Id}}">
+							<button type="submit" class="btn btn-success btn-sm">Update</button>
+						</form>
+					  </div>
+					</div>
+					</div>
+					<!-- profile end -->
+				</div>
+			</div>
+
+		</div>
+	</section>
+</body>
+</html>

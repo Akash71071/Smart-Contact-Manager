@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{normaluser/base::layout(~{::section},'Setting')}">
+<head>
+<meta charset="UTF-8" />
+<title>Setting</title>
+</head>
+<body>
+	<section>
+		<div class="card mr-2">
+
+			<div class="card-body">
+				<div class="row  d-flex justify-content-center align-item-center">
+
+					<div class="col-md-5 ml-1">
+
+						<div class="card setting-card">
+							<h5 class="text-center fw-bolder">Profile</h5>
+							<div class="card-body text-center">
+								<a th:href="@{/user/user-profile}" class="btn" style="background: #592675 !important; color: white !important;">Your Profile</a>
+							</div>
+						</div>
+
+					</div>
+					<div class="col-md-5">
+						<div class="card setting-card">
+							<h5 class="text-center">Security</h5>
+							<div class="card-body text-center">
+								<a  th:href="@{/user/change-password}" class="btn btn-warning text-white">Change Password</a>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+				<div class="row  mt-4 d-flex justify-content-center align-item-center">
+
+					<div class="col-md-5">
+
+						<div class="card setting-card">
+							<h5 class="text-center fw-bolder">Information</h5>
+							<div class="card-body text-center">
+								<a href="#" class="btn btn-primary">Information</a>
+							</div>
+						</div>
+
+					</div>
+					<div class="col-md-5">
+						 
+
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+	</section>
+</body>
+</html>

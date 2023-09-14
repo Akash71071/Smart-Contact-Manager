@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{admin/base::layout(~{::section},'Update-User')}">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section style="padding:10px 20px">
+		<div class="card">
+			<div class="card-body">
+                <h4 class="text-center text-uppercase">Edit User</h4>
+				<form th:action="@{/admin/updateUser/{Id} (Id=${userup.Id})}"
+					th:object="${userup}" method="POST">
+					<!-- Name -->
+					<div class="input-group mb-1">
+
+						<div class="input-group-prepend">
+							<div class="input-group-text">
+								<i class="fa fa-plus"></i>
+							</div>
+						</div>
+						<input class="form-control" type="text" id="firstname"
+							th:field="*{Name}" name="Name" placeholder="Enter name here"  readonly/>
+					</div>
+					<!-- Email -->
+					<div class="input-group mb-1">
+
+						<div class="input-group-prepend">
+							<div class="input-group-text">
+								@
+							</div>
+						</div>
+						<input class="form-control" type="text" id="email"
+							th:field="*{Email}" name="Email" placeholder="Enter name here" readonly/>
+					</div>
+					<!-- Role-->
+					<div class="input-group">
+
+						<div class="input-group-prepend">
+							<div class="input-group-text">
+								<i class="fa fa-hand"></i>
+							</div>
+						</div>
+						<input class="form-control" type="text" id="role"
+							th:field="*{Role}" name="Role" placeholder="Enter role here" readonly/>
+					</div>
+					<!-- About -->
+					<div class="form-group mt-2">
+						<textarea id="textarea" rows="5" class="form-control"
+							th:field="*{About}" name="About" placeholder="Enter about you" readonly></textarea>
+					</div>
+					</br>
+					<div class="form-group">
+						<label>Enabled:</label> <input id="toggle-demo" type="checkbox"
+							th:field="*{Enabled}" name="Enabled" data-toggle="toggle"
+							data-on="Enabled" data-off="Disabled" data-onstyle="success"
+							data-offstyle="danger">
+					</div>
+					<!-- Add Button -->
+					<div class="container text-center">
+						<button type="submit" class="btn btn-outline-primary">Update User</button>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</section>
+</body>
+</html>

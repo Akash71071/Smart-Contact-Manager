@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{normaluser/base::layout(~{::section},'Contact Detail')}">
+<head>
+<meta charset="UTF-8" />
+<title>Contact Detail</title>
+</head>
+<body>
+	<section>
+
+		<div class="card mr-2 mb-2 rounded  border-dark">
+			<div class="card-body">
+				<div class="container text-center">
+					<img class="shadow bg-white border border-danger rounded-circle"
+						style="width: 200px; height: 200px;" alt="Contact Image"
+						th:src="@{'/images/'+${contact.image}}">
+					<h2 th:text="${contact.name+' ('+contact.secondName}+')'"></h2>
+				</div>
+				<hr style="background: #111; height: 3px;" />
+				<div class="cotainer table-responsive text-center p-2">
+					<!-- alert -->
+					<div class="alert text-center" th:if="${session.message1}"
+						th:classappend="${session.message1.type}" role="alert">
+						<p th:text="${session.message1.content}"></p>
+						<th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
+					</div>
+					<table class="table text-center">
+						<h3>Contact Details</h3>
+						<tbody>
+
+							<tr>
+								<th scope="row">Email:</th>
+								<td><span th:text="${contact.email}"></span></td>
+							</tr>
+							<tr>
+
+								<th scope="row">Phone:</th>
+								<td><span th:text="${contact.phone}"></span></td>
+							</tr>
+							<tr>
+
+								<th scope="row">Work:</th>
+								<td><span th:text="${contact.work}"></span></td>
+							</tr>
+
+						</tbody>
+
+					</table>
+					<hr style="background: #111; height: 3px;" />
+					<div class="txet-center">
+						<h3>-----Description-----</h3>
+						<p th:text="${contact.description}" class="border border-info"></p>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+</body>
+</html>

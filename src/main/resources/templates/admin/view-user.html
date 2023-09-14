@@ -1,0 +1,62 @@
+ <!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{admin/base::layout(~{::section},'View-Users')}">
+<head>
+<meta charset="UTF-8" />
+<title>View Users</title>
+</head>
+<body>
+	<section>
+		<div class="card-body p-4">
+			<div class="table-responsive">
+				<!-- data table start -->
+
+				<table
+					class="table table-dark table-hover table-striped text-center">
+					<thead>
+						<tr>
+							<th scope="col">#ID</th>
+							<th scope="col">Name</th>
+							<!-- <th scope="col">Email</th> -->
+							<th scope="col">Image</th>
+							<th scope="col">Role</th>
+							<th scope="col">Enabled</th>
+							<th scope="col">Total Contact</th>
+							<th scope="col" colspan="3">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+
+						<tr scope="row" th:each="u:${Allusers}">
+							<th scope="row" th:text="${u.Id}">1</th>
+							<td th:text="${u.Name}">Name</td>
+							<td><img class="rounded-circle" alt=""
+								th:src="@{'/images/'+${u.ImageUrl}}" width="50px" height="50px">
+							</td>
+							<td th:text="${u.Role}">Role</td>
+							<td th:text="${u.Enabled}">Enabled</td>
+							<td th:text="${#lists.size(u.contact)}">Total Contact</td>
+							<td> 
+								<div class="container d-flex justify-content-center">
+								    <a href="#" 
+									th:href="@{'/admin/user-detail/'+${u.Id}}">
+									<button class="btn btn-primary btn-sm" style="margin-right:5px;">View</button>
+							        </a>
+									    <button th:onclick="|deleteContact(${u.Id})|"
+											class="btn btn-danger btn-sm mr-2">
+											Delete
+											</button>
+									<form method="post" th:action="@{'/admin/update-user/'+${u.Id}}">
+										<button type="submit" class="btn btn-success btn-sm">Update</button>
+									</form>
+								</div>
+							</td> 
+						</tr> 
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
